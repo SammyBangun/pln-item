@@ -21,9 +21,14 @@ Route::get('/tambahlaporan', function () {
     return view('formtambah');
 });
 
+route::get('/profile', function () {
+    return view('profile', ['user'=>Auth::user()]);
+})->middleware('auth');
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('register', [AuthController::class, 'register']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/edit/{id}', [AuthController::class, 'edit'])->name('edit');
+route::post('/update/{id}', [AuthController::class,'update'])->name('update');

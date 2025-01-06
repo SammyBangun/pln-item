@@ -14,6 +14,13 @@ Route::get('admin/dashboard', function () {
     return view('admin/dashboard');
 })->name('admin.dashboard')->middleware('auth');
 
+Route::get('/test', function () {
+    return view('test');
+});
+Route::get('/tambahlaporan', function () {
+    return view('formtambah');
+});
+
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);

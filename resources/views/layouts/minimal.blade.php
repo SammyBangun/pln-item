@@ -24,7 +24,8 @@
                     <a href="#" class="-m-1.5 p-1.5 ">
                         <span class="sr-only">Your Company</span>
                         <img :class="isOpen ? 'h-6 top-3' : 'h-8 top-6'"
-                            class="w-auto absolute left-6 transition-all duration-300" src="img/logopln.jpg" alt="">
+                            class="w-auto absolute left-6 transition-all duration-300" src="img/logopln.jpg"
+                            alt="">
 
                     </a>
                 </div>
@@ -32,7 +33,7 @@
                     <button type="button" @click="isOpen = !isOpen"
                         class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
                         <span class="sr-only">Open main menu</span>
-                        <svg :class="{'hidden': isOpen, 'block': !isOpen }" class="size-6" fill="none"
+                        <svg :class="{ 'hidden': isOpen, 'block': !isOpen }" class="size-6" fill="none"
                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"
                             data-slot="icon">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -77,9 +78,9 @@
                         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
-                            tabindex="-1" id="user-menu-item-1">Settings</a>
-                        <a href="{{route('logout')}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                        <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                     </div>
                 </div>
@@ -102,9 +103,10 @@
                                 <span class="sr-only">Your Company</span>
                                 <img class="h-8 w-auto" src="img/logopln21.png" alt="">
                             </a>
-                            <button @click="isOpen = false" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                            <button @click="isOpen = false" type="button"
+                                class="-m-2.5 rounded-md p-2.5 text-gray-700">
                                 <span class="sr-only">Close menu</span>
-                                <svg :class="{'block': isOpen, 'hidden': !isOpen }" class="size-6" fill="none"
+                                <svg :class="{ 'block': isOpen, 'hidden': !isOpen }" class="size-6" fill="none"
                                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"
                                     data-slot="icon">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -132,6 +134,9 @@
                 <ul class="navbar-menu">
                     <li><a href="/">Form Laporan</a></li>
                     <li><a href="/about">Riwayat Laporan</a></li>
+                    @if (auth()->user()->email === 'admin@gmail.com')
+                        <li><a href="/assets">Assets</a></li>
+                    @endif
                 </ul>
             </div>
         </nav>

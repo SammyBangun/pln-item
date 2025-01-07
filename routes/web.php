@@ -10,6 +10,7 @@ Route::middleware(['auth'])->group(function () {
         return view('index');
     });
 });
+
 Route::get('admin/dashboard', function () {
     return view('admin/dashboard');
 })->name('admin.dashboard')->middleware('auth');
@@ -17,13 +18,18 @@ Route::get('admin/dashboard', function () {
 Route::get('/test', function () {
     return view('test');
 });
+
 Route::get('/tambahlaporan', function () {
     return view('formtambah');
 });
 
-route::get('/profile', function () {
-    return view('profile', ['user'=>Auth::user()]);
+Route::get('/profile', function () {
+    return view('profile', ['user' => Auth::user()]);
 })->middleware('auth');
+
+Route::get('/assets', function () {
+    return view('assets');
+});
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
@@ -31,4 +37,4 @@ Route::get('register', [AuthController::class, 'showRegisterForm'])->name('regis
 Route::post('register', [AuthController::class, 'register']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/edit/{id}', [AuthController::class, 'edit'])->name('edit');
-route::post('/update/{id}', [AuthController::class,'update'])->name('update');
+route::post('/update/{id}', [AuthController::class, 'update'])->name('update');
